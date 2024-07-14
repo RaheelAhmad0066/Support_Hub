@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "90012516052",
+    "project_id": "piattopronto-92534",
+    "storage_bucket": "piattopronto-92534.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90012516052:android:b60332958ea389447d8541",
+        "android_client_info": {
+          "package_name": "com.example.recipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90012516052-u5ncle0j74q36s035c3p0ncpvsdgpi24.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.recipe",
+            "certificate_hash": "81acbab5d53c6da52fa0f02ac6e7c847ab8a86c6"
+          }
+        },
+        {
+          "client_id": "90012516052-2rq73nitu9o2kp79g50crc1juh20sare.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ4tjODRBlpgtRPAvoHBPYja2t8mor7Ao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90012516052-2rq73nitu9o2kp79g50crc1juh20sare.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
