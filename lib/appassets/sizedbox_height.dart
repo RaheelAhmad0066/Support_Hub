@@ -16,5 +16,5 @@ class AppDecoration {
   static final decorationWhite = BoxDecoration(
       borderRadius: BorderRadius.circular(26), color: CustomColors.white);
   static final decorationBgColor = BoxDecoration(
-      borderRadius: BorderRadius.circular(16), color: CustomColors.primary);
+      borderRadius: BorderRadius.circular(7), color: CustomColors.primary);
 }

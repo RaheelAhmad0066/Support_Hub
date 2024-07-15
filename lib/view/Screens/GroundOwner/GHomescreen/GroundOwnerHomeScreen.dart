@@ -6,15 +6,16 @@ import 'package:supporthub/appassets/color/colors.dart';
 import 'package:supporthub/appassets/images/images.dart';
 import 'package:supporthub/appassets/sizedbox_height.dart';
 import 'package:supporthub/appassets/textstyle/textstyles.dart';
+import 'package:supporthub/view/Screens/GroundOwner/GHomescreen/Controller/Ghomescontroller.dart';
 import 'package:supporthub/view/Screens/Player/Homescreen/Controller/homescontroller.dart';
 
-import '../NearbyGround/nearbygroundscreen.dart';
-import 'Weather/weatcher.dart';
+import '../../Player/Homescreen/Weather/weatcher.dart';
+import '../GNearbyGround/GNearbygroundscreen.dart';
 
-class HomeScreenPlayer extends StatelessWidget {
+class GroundOwnerHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final homeController = Get.put(Controller1());
+    final homeController = Get.put(GroundOwnerController());
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
@@ -62,7 +63,7 @@ class HomeScreenPlayer extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          Get.to(NearbyGroundScreen());
+                          Get.to(GNearbyGroundScreen());
                         },
                         child: Image.asset(
                           CustomImages.myground,

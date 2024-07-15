@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:supporthub/appassets/color/colors.dart';
-import '../../../../appassets/textstyle/textstyles.dart';
-import '../../splash/onboarding.dart';
-import '../Homescreen/Controller/homescontroller.dart';
+import 'package:supporthub/appassets/textstyle/textstyles.dart';
+import 'package:supporthub/view/Screens/splash/onboarding.dart';
+import '../GHomescreen/Controller/Ghomescontroller.dart';
 
-class Profilescreen extends StatelessWidget {
-  const Profilescreen({super.key});
+class GroundOwnerProfilescreen extends StatelessWidget {
+  const GroundOwnerProfilescreen({super.key});
 
   void _showLogoutDialog(BuildContext context) {
     showDialog(
@@ -53,7 +53,7 @@ class Profilescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(Controller1());
+    final controller = Get.put(GroundOwnerController());
     return Scaffold(
       appBar: AppBar(
         title: Text(

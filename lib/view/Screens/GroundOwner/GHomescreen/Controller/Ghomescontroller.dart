@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-class Controller1 extends GetxController {
+class GroundOwnerController extends GetxController {
   var userEmail = ''.obs;
   var userName = ''.obs;
   @override
@@ -16,10 +16,8 @@ class Controller1 extends GetxController {
     final User? user = FirebaseAuth.instance.currentUser;
     final String? userId = user?.uid;
     if (userId != null) {
-      QuerySnapshot snapshot = await FirebaseFirestore.instance
-          .collection('Player')
-          .where('userId', isEqualTo: userId)
-          .get();
+      QuerySnapshot snapshot =
+          await FirebaseFirestore.instance.collection('Ground_Owner').get();
       if (snapshot.docs.isNotEmpty) {
         final deta = snapshot.docs.first.data() as Map<String, dynamic>;
         userEmail.value = deta['email'];

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:supporthub/appassets/color/colors.dart';
 
+import '../../GBottomNavigation/GBotoomnavigationBar.dart';
 import '../../bottomnavigation/bottomnavigation.dart';
 
 class AuthController extends GetxController {
@@ -36,6 +37,7 @@ class AuthController extends GetxController {
           'email': email.value,
           'username': userName.value,
           'fullName': fullName.value,
+          'userId': _auth.currentUser!.uid,
           'role': 'Player',
         });
         Get.snackbar('Success', 'Registration successful',
@@ -55,7 +57,7 @@ class AuthController extends GetxController {
         });
         Get.snackbar('Success', 'Registration successful',
             colorText: CustomColors.white);
-        Get.offAll(BottomNavigation());
+        Get.offAll(GroundOwnerBottomNavigation());
       }
     } catch (e) {
       Get.snackbar('Error', '$e', colorText: CustomColors.white);
@@ -84,7 +86,7 @@ class AuthController extends GetxController {
         Get.snackbar('Message', 'Successful Login',
             colorText: CustomColors.white);
       } else {
-        Get.offAll(BottomNavigation());
+        Get.offAll(GroundOwnerBottomNavigation());
 
         Get.snackbar('Message', 'Successful Login',
             colorText: CustomColors.white);

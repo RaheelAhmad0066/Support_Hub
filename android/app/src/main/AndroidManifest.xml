@@ -7,6 +7,8 @@
         android:label="supporthub"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCa-bvn_Yn-y9qBLglmPPSQ4HJRecxgd8k"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

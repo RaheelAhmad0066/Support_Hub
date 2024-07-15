@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supporthub/appassets/images/images.dart';
-import 'package:supporthub/appassets/sizedbox_height.dart';
 import 'package:supporthub/appassets/textstyle/textstyles.dart';
 import 'package:supporthub/view/ScreenS/splash/controller/splashcontroller.dart';
 
