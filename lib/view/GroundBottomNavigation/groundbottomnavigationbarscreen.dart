@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:supporthub/appassets/color/colors.dart';
-import 'package:supporthub/view/ScreenS/GroundOwner/GHomescreen/GroundOwnerHomeScreen.dart';
-import 'package:supporthub/view/Screens/GroundOwner/GBookingscreen/GBookingscreen.dart';
-import 'package:supporthub/view/Screens/GroundOwner/GChatscreen/GChatscreen.dart';
-import 'package:supporthub/view/Screens/GroundOwner/GProfileScreen/GProfilescreen.dart';
-import 'GController/GController.dart';
+import 'package:supporthub/view/Screens/Ground/GroundBookingscreen/groundbookingscreen.dart';
+import 'package:supporthub/view/Screens/Ground/GroundChatscreen/groundchatscreen.dart';
+import 'package:supporthub/view/Screens/Ground/GroundHomescreen/groundhomescreen.dart';
+import 'package:supporthub/view/Screens/Ground/GroundProfileScreen/groundprofilescreen.dart';
 
-class GroundOwnerBottomNavigation extends StatelessWidget {
-  final navigationController = Get.put(GNavigationController());
+import 'GroundBottomNavBarController/groundbottomnavbarcontroller.dart';
+
+class GroundBottomNavigationBarScreen extends StatelessWidget {
+  final navigationController = Get.put(GroundBottomNavBarController());
 
   final List _widgetOptions = [
-    GroundOwnerHomeScreen(),
-    GroundOwnerBookingScreen(),
-    GroundOwnerChatScreen(),
-    GroundOwnerProfilescreen()
+    GroundHomeScreen(),
+    GroundBookingScreen(),
+    GroundChatScreen(),
+    GroundProfilescreen()
   ];
 
   @override

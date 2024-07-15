@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/instance_manager.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:supporthub/appassets/color/colors.dart';
 import 'package:supporthub/appassets/images/images.dart';
 import 'package:supporthub/appassets/sizedbox_height.dart';
 import 'package:supporthub/appassets/textstyle/textstyles.dart';
-import 'package:supporthub/view/Screens/GroundOwner/GHomescreen/Controller/Ghomescontroller.dart';
-import 'package:supporthub/view/Screens/Player/Homescreen/Controller/homescontroller.dart';
-
+import 'package:supporthub/view/Screens/Ground/GroundBookingscreen/groundbookingscreen.dart';
+import 'package:supporthub/view/Screens/Ground/GroundNearbyGround/groundnearbygroundscreen.dart';
 import '../../Player/Homescreen/Weather/weatcher.dart';
-import '../GNearbyGround/GNearbygroundscreen.dart';
+import '../GroundMainController/groundmaincontroller.dart';
 
-class GroundOwnerHomeScreen extends StatelessWidget {
+class GroundHomeScreen extends StatelessWidget {
+  final homeController = Get.find<GroundMainController>();
+
   @override
   Widget build(BuildContext context) {
-    final homeController = Get.put(GroundOwnerController());
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
@@ -63,7 +62,7 @@ class GroundOwnerHomeScreen extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () {
-                          Get.to(GNearbyGroundScreen());
+                          Get.to(GroundNearbyGroundScreen());
                         },
                         child: Image.asset(
                           CustomImages.myground,
@@ -79,9 +78,14 @@ class GroundOwnerHomeScreen extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      Image.asset(
-                        CustomImages.mybooking,
-                        width: 100,
+                      InkWell(
+                        onTap: () {
+                          Get.to(GroundBookingScreen());
+                        },
+                        child: Image.asset(
+                          CustomImages.mybooking,
+                          width: 100,
+                        ),
                       ),
                       Text(
                         'My Booking',

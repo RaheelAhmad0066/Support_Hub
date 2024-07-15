@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:supporthub/appassets/color/colors.dart';
+import 'package:supporthub/view/GroundBottomNavigation/groundbottomnavigationbarscreen.dart';
 
-import '../../GBottomNavigation/GBotoomnavigationBar.dart';
 import '../../bottomnavigation/bottomnavigation.dart';
 
 class AuthController extends GetxController {
@@ -57,7 +57,7 @@ class AuthController extends GetxController {
         });
         Get.snackbar('Success', 'Registration successful',
             colorText: CustomColors.white);
-        Get.offAll(GroundOwnerBottomNavigation());
+        Get.offAll(GroundBottomNavigationBarScreen());
       }
     } catch (e) {
       Get.snackbar('Error', '$e', colorText: CustomColors.white);
@@ -86,7 +86,7 @@ class AuthController extends GetxController {
         Get.snackbar('Message', 'Successful Login',
             colorText: CustomColors.white);
       } else {
-        Get.offAll(GroundOwnerBottomNavigation());
+        Get.offAll(GroundBottomNavigationBarScreen());
 
         Get.snackbar('Message', 'Successful Login',
             colorText: CustomColors.white);

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:supporthub/view/GBottomNavigation/GBotoomnavigationBar.dart';
+import 'package:supporthub/view/GroundBottomNavigation/groundbottomnavigationbarscreen.dart';
 import 'package:supporthub/view/Screens/splash/onboarding.dart';
 import 'package:supporthub/view/bottomnavigation/bottomnavigation.dart';
 
@@ -35,7 +35,7 @@ class SplashController extends GetxController {
         if (petOwnerDoc.exists) {
           String role = petOwnerDoc['role'];
           if (role == 'Ground_Owner') {
-            Get.offAll(GroundOwnerBottomNavigation());
+            Get.offAll(GroundBottomNavigationBarScreen());
           } else {
             Get.offAll(OnboardingAcreen());
           }

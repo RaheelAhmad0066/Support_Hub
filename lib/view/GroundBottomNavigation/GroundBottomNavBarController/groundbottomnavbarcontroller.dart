@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class GNavigationController extends GetxController {
+class GroundBottomNavBarController extends GetxController {
   var selectedIndex = 0.obs;
 
   void changeIndex(int index) {

@@ -6,20 +6,19 @@ import 'package:iconsax/iconsax.dart';
 import 'package:supporthub/appassets/color/colors.dart';
 import 'package:supporthub/appassets/sizedbox_height.dart';
 import 'package:supporthub/appassets/textstyle/textstyles.dart';
+import 'package:supporthub/view/Screens/Ground/GroundNearbyGround/groundmapscreen.dart';
 import 'package:supporthub/widgets/customeTextfield.dart';
 import 'package:supporthub/widgets/customelevatedvutton.dart';
 import 'package:video_player/video_player.dart';
+import '../GroundMainController/groundmaincontroller.dart';
 
-import 'controller/nearbygroundcontroller.dart';
-import 'mapscreen.dart';
-
-class GNearbyGroundScreen extends StatelessWidget {
-  const GNearbyGroundScreen({super.key});
+class GroundNearbyGroundScreen extends StatelessWidget {
+  GroundNearbyGroundScreen({super.key});
+  final controller = Get.find<GroundMainController>();
 
   @override
   Widget build(BuildContext context) {
     final key = GlobalKey<FormState>();
-    final controller = Get.put(NearbyGroundController());
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -194,7 +193,7 @@ class GNearbyGroundScreen extends StatelessWidget {
               InkWell(
                 onTap: () async {
                   await controller.getCurrentLocation();
-                  Get.to(() => MapScreen());
+                  Get.to(() => GroundMapScreen());
                 },
                 child: Container(
                   height: Get.height * 0.07,

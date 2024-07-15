@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class GroundOwnerBookingScreen extends StatelessWidget {
-  const GroundOwnerBookingScreen({super.key});
+class GroundChatScreen extends StatelessWidget {
+  const GroundChatScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

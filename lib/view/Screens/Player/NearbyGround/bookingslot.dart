@@ -8,6 +8,7 @@ import 'package:supporthub/appassets/textstyle/textstyles.dart';
 import 'package:supporthub/widgets/customelevatedvutton.dart';
 import 'package:video_player/video_player.dart';
 
+import 'Playerbooking.dart';
 import 'Services/services.dart';
 import 'controller/controller.dart';
 
@@ -178,7 +179,9 @@ class BookingSlotScreen extends StatelessWidget {
           Spacer(),
           Center(
               child: CustomButton(
-            ontap: () {},
+            ontap: () {
+              Get.to(PlayerBooking(groundDetail: groundDetail));
+            },
             title: 'Booking Slot',
             color: CustomColors.secondary,
           )),

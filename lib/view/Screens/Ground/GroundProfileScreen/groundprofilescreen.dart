@@ -5,10 +5,10 @@ import 'package:iconsax/iconsax.dart';
 import 'package:supporthub/appassets/color/colors.dart';
 import 'package:supporthub/appassets/textstyle/textstyles.dart';
 import 'package:supporthub/view/Screens/splash/onboarding.dart';
-import '../GHomescreen/Controller/Ghomescontroller.dart';
+import '../GroundMainController/groundmaincontroller.dart';
 
-class GroundOwnerProfilescreen extends StatelessWidget {
-  const GroundOwnerProfilescreen({super.key});
+class GroundProfilescreen extends StatelessWidget {
+  GroundProfilescreen({super.key});
 
   void _showLogoutDialog(BuildContext context) {
     showDialog(
@@ -51,9 +51,10 @@ class GroundOwnerProfilescreen extends StatelessWidget {
     );
   }
 
+  final controller = Get.find<GroundMainController>();
+
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(GroundOwnerController());
     return Scaffold(
       appBar: AppBar(
         title: Text(

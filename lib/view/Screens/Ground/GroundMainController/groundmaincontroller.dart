@@ -1,14 +1,20 @@
 import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:video_player/video_player.dart';
-import 'package:geocoding/geocoding.dart';
 
-class NearbyGroundController extends GetxController {
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:video_player/video_player.dart';
+
+import '../GroundBookingscreen/modal/bookingmodal.dart';
+
+class GroundMainController extends GetxController {
+  var userEmail = ''.obs;
+  var userName = ''.obs;
   var imagesList = <XFile>[].obs;
   final ImagePicker _picker = ImagePicker();
   var name = ''.obs;
@@ -16,17 +22,62 @@ class NearbyGroundController extends GetxController {
   var phoneNo = ''.obs;
   var groundDescription = ''.obs;
   var groundSize = ''.obs;
+  var bookings = <GBooking>[].obs;
   var videoFile = Rx<XFile?>(null);
   var currentPosition = Rx<LatLng?>(null);
   var locationName = 'Select Location on Map'.obs;
   Rx<VideoPlayerController?> videoController = Rx<VideoPlayerController?>(null);
-
   RxBool isLoading = false.obs;
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    getCurrentLocation();
+    getUserProfileDetails();
+    fetchBookings();
+    super.onInit();
+  }
 
   @override
   void onClose() {
     videoController.value?.dispose();
     super.onClose();
+  }
+
+  Future<void> getUserProfileDetails() async {
+    final User? user = FirebaseAuth.instance.currentUser;
+    final String? userId = user?.uid;
+
+    if (userId != null) {
+      try {
+        DocumentSnapshot snapshot = await FirebaseFirestore.instance
+            .collection('Ground_Owner')
+            .doc(userId)
+            .get();
+
+        if (snapshot.exists) {
+          final data = snapshot.data() as Map<String, dynamic>;
+          userEmail.value = data['email'];
+          userName.value = data['fullName'];
+        } else {
+          // Handle the case when the document does not exist
+          print("Document does not exist");
+        }
+      } catch (e) {
+        // Handle any errors
+        print("Error fetching user profile details: $e");
+      }
+    } else {
+      // Handle the case when userId is null
+      print("User is not logged in");
+    }
+  }
+
+  void fetchBookings() async {
+    var snapchot =
+        await FirebaseFirestore.instance.collection('bookingsslot').get();
+    var bookingDeta =
+        snapchot.docs.map((doc) => GBooking.fromMap(doc.data())).toList();
+    bookings.value = bookingDeta;
   }
 
   void removeDocument(int index) {

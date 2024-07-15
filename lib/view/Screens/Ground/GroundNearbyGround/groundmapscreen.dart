@@ -4,11 +4,10 @@ import 'package:get/get.dart';
 import 'package:google_places_flutter/google_places_flutter.dart';
 import 'package:supporthub/appassets/color/colors.dart';
 import 'package:supporthub/widgets/customelevatedvutton.dart';
-import 'package:velocity_x/velocity_x.dart';
-import 'controller/nearbygroundcontroller.dart';
+import '../GroundMainController/groundmaincontroller.dart';
 
-class MapScreen extends StatelessWidget {
-  final controller = Get.put(NearbyGroundController());
+class GroundMapScreen extends StatelessWidget {
+  final controller = Get.find<GroundMainController>();
 
   @override
   Widget build(BuildContext context) {

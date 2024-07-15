@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -15,6 +16,11 @@ class GroundController extends GetxController {
   Position? currentPosition;
   late VideoPlayerController videoController;
   var isVideoInitialized = false.obs;
+  var selectedDate = DateTime.now().obs;
+  var selectedTimeSlot = ''.obs;
+  var phoneNumber = ''.obs;
+  var players = 0.obs;
+  var bookedSlots = <String>[].obs;
   var isPlaying = false.obs;
   @override
   void onInit() {
@@ -23,6 +29,10 @@ class GroundController extends GetxController {
       groundDetails.assignAll(grounds);
     });
 
+    fetchBookedSlots(selectedDate.value);
+    selectedDate.listen((date) {
+      fetchBookedSlots(date);
+    });
     _getCurrentLocation();
   }
 
@@ -114,5 +124,54 @@ class GroundController extends GetxController {
       );
       markers.add(marker);
     });
+  }
+
+  void selectDate(DateTime date) {
+    selectedDate.value = date;
+  }
+
+  void selectTimeSlot(String timeSlot) {
+    selectedTimeSlot.value = timeSlot;
+  }
+
+  Future<void> fetchBookedSlots(DateTime date) async {
+    try {
+      var bookings = await FirebaseFirestore.instance
+          .collection('bookings')
+          .where('date',
+              isEqualTo: date
+                  .toIso8601String()
+                  .substring(0, 10)) // Store date as string YYYY-MM-DD
+          .get();
+
+      bookedSlots.clear();
+      for (var doc in bookings.docs) {
+        bookedSlots.add(doc['timeSlot']);
+      }
+    } catch (e) {
+      print("Error fetching booked slots: $e");
+    }
+  }
+
+  Future<void> bookSlot(String groundName) async {
+    isLoading.value = true;
+    try {
+      await FirebaseFirestore.instance.collection('bookingsslot').add({
+        'date': selectedDate.value.toIso8601String().substring(0, 10),
+        'timeSlot': selectedTimeSlot.value,
+        'phoneNumber': phoneNumber.value,
+        'players': players.value,
+        'groundName': groundName,
+      });
+      Get.snackbar('Success', 'Booking Confirmed');
+      // fetchBookedSlots(selectedDate.value); // Refresh booked slots
+    } catch (e) {
+      // Print error for debugging
+      print("Error while booking slot: $e");
+      // Show an error snackbar
+      Get.snackbar('Error', 'Failed to book slot');
+    } finally {
+      isLoading.value = false;
+    }
   }
 }

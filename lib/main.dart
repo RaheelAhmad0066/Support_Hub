@@ -4,18 +4,18 @@ import 'package:get/get.dart';
 import 'package:supporthub/appassets/color/colors.dart';
 import 'package:supporthub/appassets/textstyle/textstyles.dart';
 import 'package:supporthub/firebase_option.dart';
+import 'package:supporthub/view/Screens/Ground/GroundMainController/groundmaincontroller.dart';
 import 'package:supporthub/view/Screens/splash/splashscreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(options: DefaultFirebaseOptions.android);
+  Get.put(GroundMainController());
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         appBarTheme: AppBarTheme(
             backgroundColor: CustomColors.primary,
-            titleTextStyle: AppTextStyles.medium.copyWith(fontSize: 18),
-            iconTheme: IconThemeData(color: Colors.white)),
+            iconTheme: IconThemeData(color: Colors.white),
+            titleTextStyle: AppTextStyles.medium.copyWith(fontSize: 18)),
         progressIndicatorTheme:
             ProgressIndicatorThemeData(color: CustomColors.primary),
         useMaterial3: true,
