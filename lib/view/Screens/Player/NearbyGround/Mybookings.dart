@@ -8,7 +8,7 @@ import 'package:supporthub/appassets/textstyle/textstyles.dart';
 import 'bookingslot.dart';
 import 'controller/controller.dart';
 
-class NearbyGroundScreen extends StatelessWidget {
+class MyBookings extends StatelessWidget {
   final _mapController = Get.put(GroundController());
 
   @override
@@ -16,7 +16,7 @@ class NearbyGroundScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-        'Nearby Ground',
+        'My Bookings',
       )),
       body: Obx(() {
         if (_mapController.isLoading.value) {
@@ -87,7 +87,10 @@ class NearbyGroundScreen extends StatelessWidget {
                             groundDetail.description,
                             style: AppTextStyles.small,
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(
+                                BookingSlotScreen(groundDetail: groundDetail));
+                          },
                         ),
                       ),
                     );

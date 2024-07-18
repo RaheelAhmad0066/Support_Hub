@@ -6,6 +6,8 @@ import 'package:supporthub/view/Screens/Player/Bookingscreen/bokkingscreen.dart'
 import 'package:supporthub/view/Screens/Player/Chatscreen/chatscreen.dart';
 import 'package:supporthub/view/Screens/Player/ProfileScreen/profilescreen.dart';
 import 'package:supporthub/view/Screens/Player/homescreen/playhomescreen.dart';
+import '../Screens/Player/NearbyGround/Mybookings.dart';
+import '../Screens/Player/NearbyGround/nearbygroundscreen.dart';
 import 'controller/controller.dart';
 
 class BottomNavigation extends StatelessWidget {
@@ -14,7 +16,7 @@ class BottomNavigation extends StatelessWidget {
 
   final List _widgetOptions = [
     HomeScreenPlayer(),
-    BookingScreen(),
+    MyBookings(),
     ChatScreen(),
     Profilescreen()
   ];

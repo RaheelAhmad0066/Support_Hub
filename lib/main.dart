@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supporthub/appassets/color/colors.dart';
 import 'package:supporthub/appassets/textstyle/textstyles.dart';
-import 'package:supporthub/firebase_option.dart';
 import 'package:supporthub/view/Screens/Ground/GroundMainController/groundmaincontroller.dart';
 import 'package:supporthub/view/Screens/splash/splashscreen.dart';
 

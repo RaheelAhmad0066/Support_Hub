@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:supporthub/appassets/images/images.dart';
 
-import '../../appassets/color/colors.dart';
-import '../../appassets/sizedbox_height.dart';
-import '../../appassets/textstyle/textstyles.dart';
-import '../../widgets/customeTextfield.dart';
-import '../../widgets/customelevatedvutton.dart';
+import '../appassets/color/colors.dart';
+import '../appassets/sizedbox_height.dart';
+import '../appassets/textstyle/textstyles.dart';
+import '../widgets/customeTextfield.dart';
+import '../widgets/customelevatedvutton.dart';
 import 'controller/authcontroller.dart';
 import 'register.dart';
 

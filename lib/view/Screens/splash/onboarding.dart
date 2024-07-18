@@ -5,7 +5,7 @@ import 'package:supporthub/appassets/sizedbox_height.dart';
 import 'package:supporthub/appassets/textstyle/textstyles.dart';
 
 import '../../../widgets/customelevatedvutton.dart';
-import '../../auth/register.dart';
+import '../../../auth/register.dart';
 
 class OnboardingAcreen extends StatelessWidget {
   const OnboardingAcreen({super.key});

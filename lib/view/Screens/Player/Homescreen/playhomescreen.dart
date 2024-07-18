@@ -8,6 +8,7 @@ import 'package:supporthub/appassets/sizedbox_height.dart';
 import 'package:supporthub/appassets/textstyle/textstyles.dart';
 import 'package:supporthub/view/Screens/Player/Homescreen/Controller/homescontroller.dart';
 
+import '../NearbyGround/Mybookings.dart';
 import '../NearbyGround/nearbygroundscreen.dart';
 import 'Weather/weatcher.dart';
 
@@ -78,9 +79,14 @@ class HomeScreenPlayer extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      Image.asset(
-                        CustomImages.mybooking,
-                        width: 100,
+                      InkWell(
+                        onTap: () {
+                          Get.to(MyBookings());
+                        },
+                        child: Image.asset(
+                          CustomImages.mybooking,
+                          width: 100,
+                        ),
                       ),
                       Text(
                         'My Booking',

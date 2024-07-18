@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:supporthub/appassets/color/colors.dart';
 import 'package:supporthub/view/GroundBottomNavigation/groundbottomnavigationbarscreen.dart';
 
-import '../../bottomnavigation/bottomnavigation.dart';
+import '../../view/bottomnavigation/bottomnavigation.dart';
 
 class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;

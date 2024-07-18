@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:supporthub/widgets/customelevatedvutton.dart';
 
-import '../../appassets/color/colors.dart';
-import '../../appassets/sizedbox_height.dart';
-import '../../appassets/textstyle/textstyles.dart';
-import '../../widgets/customeTextfield.dart';
+import '../appassets/color/colors.dart';
+import '../appassets/sizedbox_height.dart';
+import '../appassets/textstyle/textstyles.dart';
+import '../widgets/customeTextfield.dart';
 import 'controller/authcontroller.dart';
 import 'login.dart';
 
