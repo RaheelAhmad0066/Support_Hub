@@ -139,6 +139,7 @@ class GroundNearbyGroundScreen extends StatelessWidget {
                     .copyWith(fontWeight: FontWeight.bold),
               ),
               Obx(() => Wrap(
+                    runSpacing: 2,
                     spacing: 8,
                     children: [
                       for (int i = 0; i < controller.imagesList.length; i++)

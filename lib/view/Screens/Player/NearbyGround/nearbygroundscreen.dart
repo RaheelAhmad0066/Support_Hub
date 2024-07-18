@@ -61,7 +61,16 @@ class NearbyGroundScreen extends StatelessWidget {
                           title: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Image.network(groundDetail.imageUrls[0]),
+                              Container(
+                                width: Get.width,
+                                height: Get.height * 0.2,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                            groundDetail.imageUrls[0]),
+                                        fit: BoxFit.fitWidth)),
+                              ),
                               Text(
                                 groundDetail.groundName,
                                 style: AppTextStyles.medium

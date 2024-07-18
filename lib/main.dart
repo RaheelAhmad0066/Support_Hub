@@ -7,9 +7,9 @@ import 'package:supporthub/firebase_option.dart';
 import 'package:supporthub/view/Screens/Ground/GroundMainController/groundmaincontroller.dart';
 import 'package:supporthub/view/Screens/splash/splashscreen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(options: DefaultFirebaseOptions.android);
+  await Firebase.initializeApp();
   Get.put(GroundMainController());
   runApp(const MyApp());
 }

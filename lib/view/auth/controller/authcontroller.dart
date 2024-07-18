@@ -75,21 +75,30 @@ class AuthController extends GetxController {
         password: password.value,
       );
 
-      DocumentSnapshot vetDoc = await _firestore
-          .collection('player')
+      // Check if the user is a player
+      DocumentSnapshot playerDoc = await _firestore
+          .collection('Player')
           .doc(userCredential.user!.uid)
           .get();
 
-      if (vetDoc.exists == 'player') {
+      if (playerDoc.exists) {
         Get.offAll(BottomNavigation());
-
         Get.snackbar('Message', 'Successful Login',
             colorText: CustomColors.white);
       } else {
-        Get.offAll(GroundBottomNavigationBarScreen());
+        // Check if the user is a ground owner
+        DocumentSnapshot groundOwnerDoc = await _firestore
+            .collection('Ground_Owner')
+            .doc(userCredential.user!.uid)
+            .get();
 
-        Get.snackbar('Message', 'Successful Login',
-            colorText: CustomColors.white);
+        if (groundOwnerDoc.exists) {
+          Get.offAll(GroundBottomNavigationBarScreen());
+          Get.snackbar('Message', 'Successful Login',
+              colorText: CustomColors.white);
+        } else {
+          Get.snackbar('Error', 'No user found', colorText: CustomColors.white);
+        }
       }
     } catch (e) {
       Get.snackbar('Error', '$e', colorText: CustomColors.white);

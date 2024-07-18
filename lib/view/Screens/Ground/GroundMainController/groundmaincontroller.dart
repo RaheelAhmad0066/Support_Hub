@@ -11,6 +11,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:video_player/video_player.dart';
 
 import '../GroundBookingscreen/modal/bookingmodal.dart';
+import '../GroundProfileScreen/groundmodal/groundmodal.dart';
 
 class GroundMainController extends GetxController {
   var userEmail = ''.obs;
@@ -34,6 +35,8 @@ class GroundMainController extends GetxController {
     getCurrentLocation();
     getUserProfileDetails();
     fetchBookings();
+    fetchUserData();
+
     super.onInit();
   }
 
@@ -196,6 +199,43 @@ class GroundMainController extends GetxController {
     } catch (e) {
       Get.snackbar('Error', 'Failed to upload file: $e');
       rethrow; // Re-throw the error for higher-level handling
+    }
+  }
+
+  var user = UserModel().obs;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  void fetchUserData() async {
+    try {
+      User? authUser = FirebaseAuth.instance.currentUser;
+      if (authUser == null) {
+        print('User is not authenticated');
+        return;
+      }
+
+      DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
+          await _firestore.collection('users').doc(authUser.uid).get();
+
+      if (documentSnapshot.exists && documentSnapshot.data() != null) {
+        user.value = UserModel.fromMap(documentSnapshot.data()!);
+      } else {
+        print('Document does not exist or data is null');
+      }
+    } catch (e) {
+      print('Error fetching user data: $e');
+    }
+  }
+
+  Future<void> deleteAccount() async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        await user.delete();
+        print('User account deleted');
+        // Perform any additional cleanup or navigation if needed
+      }
+    } catch (e) {
+      print('Failed to delete user account: $e');
     }
   }
 }

@@ -79,7 +79,7 @@ class GroundProfilescreen extends StatelessWidget {
               style: AppTextStyles.heading1black.copyWith(fontSize: 20),
             ),
             Obx(() => Text(
-                  '${controller.userName.value}',
+                  '${controller.userName.value ?? ''}',
                   style: AppTextStyles.mediumblack,
                 )),
             SizedBox(height: 20),
@@ -88,7 +88,7 @@ class GroundProfilescreen extends StatelessWidget {
               style: AppTextStyles.heading1black.copyWith(fontSize: 20),
             ),
             Obx(() => Text(
-                  '${controller.userEmail.value}',
+                  '${controller.userEmail.value ?? ''}',
                   style: AppTextStyles.mediumblack,
                 )),
             SizedBox(height: 40),
